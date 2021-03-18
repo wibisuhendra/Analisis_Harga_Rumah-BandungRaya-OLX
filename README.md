@@ -45,4 +45,20 @@ Untuk melakukan training dan membuat model maka atribut yang digunakan adalah be
 Dalam proses Feature Engineering dilakukan dua pekerjaan, yang pertama adalah one hot encoding terhadap data kategori, yaitu location dan cert, dan yang kedua adalah feature selection dimana kedua pekerjaan ini dilakukan untuk memperoleh model yang lebih baik. One hot encoding menambahkan jumlah atribut menjadi 73 atribut total. Proses feature selection dilakukan menggunakan Lasso regression dengan parameter alpha = 0.005,  dan random_state = 0, dimana hasilnya adalah semua atribut dapat digunakan. Sehingga tidak ada atribut yang digunakan pada proses training model regresi. 
 
 
+Training dan Analisis:
+
+a.	Analisis Korelasi
+Pada analisis korelasi digunakan fungsi corr, untuk medapatakan nilai korelasi antar variabel, dapat dilihat bahwa korelasi harga terhadap landsqr dan building sqr cenderung signifikan dibandingkan dengan variabel yang lainnya.
+ 
+
+b.	Analisis harga terhadap lokasi
+Pada tahapan ini dibagi menjadi 4 kategori yaitu lima belas teratas untuk lokasi dengan rata-rata harga rumah, lima belas teratas untuk lokasi dengan nilai maksimal harga rumah, lima belas terbawah untuk lokasi dengan rata-rata harga rumah, dan lima belas terbawah untuk lokasi dengan nilai maksimal harga rumah. Gambar di bawah ini merupakan plot dari rata-rata harga rumah berdasarkan lokasi, dapat dilihat terdapat beberapa lokasi yang memiliki nilai rata-rata cenderung jauh lebih tinggi dari pada lokasi lainnya.
+   
+
+c.	Pembentukan Model
+Dalam membentuk model digunakan 2 jenis algoritma, yang pertama adalah linear regression dan yang kedua adalah xgboost regressor. Sebelum melakukan pemodelan data sebelumnya dibagi terlebih dahulu menjadi data training dan data testing menggunakan train test split dari sklearn, dimana jumlah data tesnya yaitu 20 persen dari data yang ada sedangkan data trainingnya dalah 80 persen dari data yang ada.
+•	Linear Regression memperoleh score 0.61
+ 
+•	XGBoost dengan parameter objective ='reg:linear', colsample_bytree = 0.5, learning_rate = 0.5, max_depth = 50, alpha = 10, n_estimators = 10,  memperoleh score 0.91
+ 
 
